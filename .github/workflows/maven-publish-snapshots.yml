@@ -6,7 +6,7 @@ name: Maven Publish Snapshot
 on:
   push:
     branches: 
-      - development
+      - main
 
 jobs:
   build:
@@ -70,6 +70,12 @@ jobs:
       continue-on-error: true
       with:
         package-name: 'io.admin-shell.aas.dataformat-json'
+
+    - name: Delete old ua nodeset package
+      uses: actions/delete-package-versions@v1
+      continue-on-error: true
+      with:
+        package-name: 'io.admin-shell.aas.dataformat-uanodeset'
         
     - name: Delete old validator package
       uses: actions/delete-package-versions@v1
